@@ -59,7 +59,7 @@ void UnpageProcessByID(DWORD processID, LPVOID MaximumApplicationAddress, DWORD 
             {
                 //fprintf(stderr, "Page at 0x%08X: Good, unpaging.\n", lpMem);
 
-                if (meminfo.Protect > 50) { std::cerr << meminfo.Protect << " - " << PAGE_GUARD << std::endl; }
+                if (meminfo.Protect & PAGE_GUARD)
                 {
                     // skip guard page, which is not readable, nor necessary
                     break;
